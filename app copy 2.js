@@ -42,11 +42,21 @@ function solveProblem(problem) {
 
     for (let i = 0; i < problem.testCases.length; i += linesPerTestCase) {
         // define all the required variables
+        let score = 0, n = p[i][0], k = p[i][1], str = p[i + 1];
 
+        // calculate goodness score
+        for (let j = 0; j < Math.floor(n / 2); j++) {
+            if (str[0].charAt(j) != str[0].charAt(n - (j + 1))) {
+                score++
+            }
+        }
+
+        // difference of the req. score and the score
         // calculate result
-        let result
+        let result = Math.abs(score - k)
 
-        // operational variables (don't worry about these)
+
+        // operational variables
         countOfWork++
         answer += `\nCase #${countOfWork}: ${result}`
     }
